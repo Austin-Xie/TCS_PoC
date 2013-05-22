@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://tcs.service.optus.net/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://tcs.service.optus.net/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tcs.service.optus.net/">
+   <wsdl:documentation>Optus Device Capability Service</wsdl:documentation>
+   <wsdl:types>
+      <xs:schema xmlns:ns="http://tcs.service.optus.net/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tcs.service.optus.net/xsd">
+         <xs:element name="isApplicationSupportedByDevice">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="ua" nillable="true" type="xs:string" />
+                  <xs:element name="appName" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="isApplicationSupportedByDeviceResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="return" nillable="true" type="xs:boolean" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getCapabilityForUserAgentAndCapabilityName">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="ua" nillable="true" type="xs:string" />
+                  <xs:element name="capName" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getCapabilityForUserAgentAndCapabilityNameResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="return" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getUserAgentForMakeModel">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="make" nillable="true" type="xs:string" />
+                  <xs:element name="model" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getUserAgentForMakeModelResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="return" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getVersionResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="return" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getAllGroupsResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getAllModelsByMake">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="make" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getAllModelsByMakeResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getCapabilityNamesForGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="groupName" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getCapabilityNamesForGroupResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getMakesResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getOptusApplicationByName">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="appName" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getOptusApplicationByNameResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="return" nillable="true" type="ns:OptusApplication" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="OptusApplication" type="ns:OptusApplication" />
+         <xs:complexType name="OptusApplication">
+            <xs:sequence>
+               <xs:element maxOccurs="unbounded" name="capabilities" nillable="true" type="ns:OptusCapability" />
+               <xs:element name="description" nillable="true" type="xs:string" />
+               <xs:element name="name" nillable="true" type="xs:string" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="OptusCapability" type="ns:OptusCapability" />
+         <xs:complexType name="OptusCapability">
+            <xs:sequence>
+               <xs:element name="edited" type="xs:boolean" />
+               <xs:element name="name" nillable="true" type="xs:string" />
+               <xs:element name="overridden" type="xs:boolean" />
+               <xs:element name="patched" type="xs:boolean" />
+               <xs:element name="value" nillable="true" type="xs:string" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="getAllOptusApplicationsResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="ns:OptusApplication" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getOptusApplicationsForMakeAndModel">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="make" nillable="true" type="xs:string" />
+                  <xs:element name="model" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getOptusApplicationsForMakeAndModelResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="ns:OptusApplication" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getOptusApplicationsForUseragent">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="ua" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getOptusApplicationsForUseragentResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="ns:OptusApplication" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getCapabilitiesForUserAgentAndGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="ua" nillable="true" type="xs:string" />
+                  <xs:element name="groupID" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getCapabilitiesForUserAgentAndGroupResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="ns:OptusCapability" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="findDeviceForMakeModel">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="make" nillable="true" type="xs:string" />
+                  <xs:element name="model" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="findDeviceForMakeModelResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="return" nillable="true" type="ns:OptusDevice" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="OptusDevice" type="ns:OptusDevice" />
+         <xs:complexType name="OptusDevice">
+            <xs:sequence>
+               <xs:element name="actualDevice" type="xs:boolean" />
+               <xs:element name="deviceID" nillable="true" type="xs:string" />
+               <xs:element name="fallbackID" nillable="true" type="xs:string" />
+               <xs:element name="make" nillable="true" type="xs:string" />
+               <xs:element name="model" nillable="true" type="xs:string" />
+               <xs:element name="patchedDevice" type="xs:boolean" />
+               <xs:element name="userAgent" nillable="true" type="xs:string" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="getDevicesForApplication">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="appName" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getDevicesForApplicationResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="ns:OptusDevice" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getDevicesWithCapabilities">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="caps" nillable="true" type="ns:OptusCapability" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getDevicesWithCapabilitiesResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="return" nillable="true" type="ns:OptusDevice" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="getUserAgentForMakeModelMessage">
+      <wsdl:part name="part1" element="ns0:getUserAgentForMakeModel" />
+   </wsdl:message>
+   <wsdl:message name="getUserAgentForMakeModelResponse">
+      <wsdl:part name="part1" element="ns0:getUserAgentForMakeModelResponse" />
+   </wsdl:message>
+   <wsdl:message name="getAllOptusApplicationsMessage" />
+   <wsdl:message name="getAllOptusApplicationsResponse">
+      <wsdl:part name="part1" element="ns0:getAllOptusApplicationsResponse" />
+   </wsdl:message>
+   <wsdl:message name="getCapabilityForUserAgentAndCapabilityNameMessage">
+      <wsdl:part name="part1" element="ns0:getCapabilityForUserAgentAndCapabilityName" />
+   </wsdl:message>
+   <wsdl:message name="getCapabilityForUserAgentAndCapabilityNameResponse">
+      <wsdl:part name="part1" element="ns0:getCapabilityForUserAgentAndCapabilityNameResponse" />
+   </wsdl:message>
+   <wsdl:message name="getCapabilitiesForUserAgentAndGroupMessage">
+      <wsdl:part name="part1" element="ns0:getCapabilitiesForUserAgentAndGroup" />
+   </wsdl:message>
+   <wsdl:message name="getCapabilitiesForUserAgentAndGroupResponse">
+      <wsdl:part name="part1" element="ns0:getCapabilitiesForUserAgentAndGroupResponse" />
+   </wsdl:message>
+   <wsdl:message name="findDeviceForMakeModelMessage">
+      <wsdl:part name="part1" element="ns0:findDeviceForMakeModel" />
+   </wsdl:message>
+   <wsdl:message name="findDeviceForMakeModelResponse">
+      <wsdl:part name="part1" element="ns0:findDeviceForMakeModelResponse" />
+   </wsdl:message>
+   <wsdl:message name="getAllModelsByMakeMessage">
+      <wsdl:part name="part1" element="ns0:getAllModelsByMake" />
+   </wsdl:message>
+   <wsdl:message name="getAllModelsByMakeResponse">
+      <wsdl:part name="part1" element="ns0:getAllModelsByMakeResponse" />
+   </wsdl:message>
+   <wsdl:message name="getMakesMessage" />
+   <wsdl:message name="getMakesResponse">
+      <wsdl:part name="part1" element="ns0:getMakesResponse" />
+   </wsdl:message>
+   <wsdl:message name="getOptusApplicationsForMakeAndModelMessage">
+      <wsdl:part name="part1" element="ns0:getOptusApplicationsForMakeAndModel" />
+   </wsdl:message>
+   <wsdl:message name="getOptusApplicationsForMakeAndModelResponse">
+      <wsdl:part name="part1" element="ns0:getOptusApplicationsForMakeAndModelResponse" />
+   </wsdl:message>
+   <wsdl:message name="isApplicationSupportedByDeviceMessage">
+      <wsdl:part name="part1" element="ns0:isApplicationSupportedByDevice" />
+   </wsdl:message>
+   <wsdl:message name="isApplicationSupportedByDeviceResponse">
+      <wsdl:part name="part1" element="ns0:isApplicationSupportedByDeviceResponse" />
+   </wsdl:message>
+   <wsdl:message name="getVersionMessage" />
+   <wsdl:message name="getVersionResponse">
+      <wsdl:part name="part1" element="ns0:getVersionResponse" />
+   </wsdl:message>
+   <wsdl:message name="getDevicesWithCapabilitiesMessage">
+      <wsdl:part name="part1" element="ns0:getDevicesWithCapabilities" />
+   </wsdl:message>
+   <wsdl:message name="getDevicesWithCapabilitiesResponse">
+      <wsdl:part name="part1" element="ns0:getDevicesWithCapabilitiesResponse" />
+   </wsdl:message>
+   <wsdl:message name="getAllGroupsMessage" />
+   <wsdl:message name="getAllGroupsResponse">
+      <wsdl:part name="part1" element="ns0:getAllGroupsResponse" />
+   </wsdl:message>
+   <wsdl:message name="getCapabilityNamesForGroupMessage">
+      <wsdl:part name="part1" element="ns0:getCapabilityNamesForGroup" />
+   </wsdl:message>
+   <wsdl:message name="getCapabilityNamesForGroupResponse">
+      <wsdl:part name="part1" element="ns0:getCapabilityNamesForGroupResponse" />
+   </wsdl:message>
+   <wsdl:message name="getOptusApplicationByNameMessage">
+      <wsdl:part name="part1" element="ns0:getOptusApplicationByName" />
+   </wsdl:message>
+   <wsdl:message name="getOptusApplicationByNameResponse">
+      <wsdl:part name="part1" element="ns0:getOptusApplicationByNameResponse" />
+   </wsdl:message>
+   <wsdl:message name="getOptusApplicationsForUseragentMessage">
+      <wsdl:part name="part1" element="ns0:getOptusApplicationsForUseragent" />
+   </wsdl:message>
+   <wsdl:message name="getOptusApplicationsForUseragentResponse">
+      <wsdl:part name="part1" element="ns0:getOptusApplicationsForUseragentResponse" />
+   </wsdl:message>
+   <wsdl:message name="getDevicesForApplicationMessage">
+      <wsdl:part name="part1" element="ns0:getDevicesForApplication" />
+   </wsdl:message>
+   <wsdl:message name="getDevicesForApplicationResponse">
+      <wsdl:part name="part1" element="ns0:getDevicesForApplicationResponse" />
+   </wsdl:message>
+   <wsdl:portType name="WURFLDeviceServicePortType">
+      <wsdl:operation name="getUserAgentForMakeModel">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getUserAgentForMakeModelMessage" wsaw:Action="urn:getUserAgentForMakeModel" />
+         <wsdl:output message="axis2:getUserAgentForMakeModelResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getAllOptusApplications">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getAllOptusApplicationsMessage" wsaw:Action="urn:getAllOptusApplications" />
+         <wsdl:output message="axis2:getAllOptusApplicationsResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityForUserAgentAndCapabilityName">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getCapabilityForUserAgentAndCapabilityNameMessage" wsaw:Action="urn:getCapabilityForUserAgentAndCapabilityName" />
+         <wsdl:output message="axis2:getCapabilityForUserAgentAndCapabilityNameResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilitiesForUserAgentAndGroup">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getCapabilitiesForUserAgentAndGroupMessage" wsaw:Action="urn:getCapabilitiesForUserAgentAndGroup" />
+         <wsdl:output message="axis2:getCapabilitiesForUserAgentAndGroupResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="findDeviceForMakeModel">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:findDeviceForMakeModelMessage" wsaw:Action="urn:findDeviceForMakeModel" />
+         <wsdl:output message="axis2:findDeviceForMakeModelResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getAllModelsByMake">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getAllModelsByMakeMessage" wsaw:Action="urn:getAllModelsByMake" />
+         <wsdl:output message="axis2:getAllModelsByMakeResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getMakes">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getMakesMessage" wsaw:Action="urn:getMakes" />
+         <wsdl:output message="axis2:getMakesResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForMakeAndModel">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getOptusApplicationsForMakeAndModelMessage" wsaw:Action="urn:getOptusApplicationsForMakeAndModel" />
+         <wsdl:output message="axis2:getOptusApplicationsForMakeAndModelResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="isApplicationSupportedByDevice">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:isApplicationSupportedByDeviceMessage" wsaw:Action="urn:isApplicationSupportedByDevice" />
+         <wsdl:output message="axis2:isApplicationSupportedByDeviceResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getVersion">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getVersionMessage" wsaw:Action="urn:getVersion" />
+         <wsdl:output message="axis2:getVersionResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesWithCapabilities">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getDevicesWithCapabilitiesMessage" wsaw:Action="urn:getDevicesWithCapabilities" />
+         <wsdl:output message="axis2:getDevicesWithCapabilitiesResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getAllGroups">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getAllGroupsMessage" wsaw:Action="urn:getAllGroups" />
+         <wsdl:output message="axis2:getAllGroupsResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityNamesForGroup">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getCapabilityNamesForGroupMessage" wsaw:Action="urn:getCapabilityNamesForGroup" />
+         <wsdl:output message="axis2:getCapabilityNamesForGroupResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationByName">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getOptusApplicationByNameMessage" wsaw:Action="urn:getOptusApplicationByName" />
+         <wsdl:output message="axis2:getOptusApplicationByNameResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForUseragent">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getOptusApplicationsForUseragentMessage" wsaw:Action="urn:getOptusApplicationsForUseragent" />
+         <wsdl:output message="axis2:getOptusApplicationsForUseragentResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesForApplication">
+         <wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="axis2:getDevicesForApplicationMessage" wsaw:Action="urn:getDevicesForApplication" />
+         <wsdl:output message="axis2:getDevicesForApplicationResponse" />
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="WURFLDeviceServiceSOAP11Binding" type="axis2:WURFLDeviceServicePortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+      <wsdl:operation name="getUserAgentForMakeModel">
+         <soap:operation soapAction="urn:getUserAgentForMakeModel" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllOptusApplications">
+         <soap:operation soapAction="urn:getAllOptusApplications" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityForUserAgentAndCapabilityName">
+         <soap:operation soapAction="urn:getCapabilityForUserAgentAndCapabilityName" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilitiesForUserAgentAndGroup">
+         <soap:operation soapAction="urn:getCapabilitiesForUserAgentAndGroup" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findDeviceForMakeModel">
+         <soap:operation soapAction="urn:findDeviceForMakeModel" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllModelsByMake">
+         <soap:operation soapAction="urn:getAllModelsByMake" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getMakes">
+         <soap:operation soapAction="urn:getMakes" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForMakeAndModel">
+         <soap:operation soapAction="urn:getOptusApplicationsForMakeAndModel" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="isApplicationSupportedByDevice">
+         <soap:operation soapAction="urn:isApplicationSupportedByDevice" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getVersion">
+         <soap:operation soapAction="urn:getVersion" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesWithCapabilities">
+         <soap:operation soapAction="urn:getDevicesWithCapabilities" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllGroups">
+         <soap:operation soapAction="urn:getAllGroups" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityNamesForGroup">
+         <soap:operation soapAction="urn:getCapabilityNamesForGroup" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationByName">
+         <soap:operation soapAction="urn:getOptusApplicationByName" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForUseragent">
+         <soap:operation soapAction="urn:getOptusApplicationsForUseragent" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesForApplication">
+         <soap:operation soapAction="urn:getDevicesForApplication" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="WURFLDeviceServiceSOAP12Binding" type="axis2:WURFLDeviceServicePortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+      <wsdl:operation name="getUserAgentForMakeModel">
+         <soap12:operation soapAction="urn:getUserAgentForMakeModel" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllOptusApplications">
+         <soap12:operation soapAction="urn:getAllOptusApplications" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityForUserAgentAndCapabilityName">
+         <soap12:operation soapAction="urn:getCapabilityForUserAgentAndCapabilityName" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilitiesForUserAgentAndGroup">
+         <soap12:operation soapAction="urn:getCapabilitiesForUserAgentAndGroup" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findDeviceForMakeModel">
+         <soap12:operation soapAction="urn:findDeviceForMakeModel" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllModelsByMake">
+         <soap12:operation soapAction="urn:getAllModelsByMake" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getMakes">
+         <soap12:operation soapAction="urn:getMakes" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForMakeAndModel">
+         <soap12:operation soapAction="urn:getOptusApplicationsForMakeAndModel" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="isApplicationSupportedByDevice">
+         <soap12:operation soapAction="urn:isApplicationSupportedByDevice" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getVersion">
+         <soap12:operation soapAction="urn:getVersion" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesWithCapabilities">
+         <soap12:operation soapAction="urn:getDevicesWithCapabilities" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllGroups">
+         <soap12:operation soapAction="urn:getAllGroups" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityNamesForGroup">
+         <soap12:operation soapAction="urn:getCapabilityNamesForGroup" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationByName">
+         <soap12:operation soapAction="urn:getOptusApplicationByName" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForUseragent">
+         <soap12:operation soapAction="urn:getOptusApplicationsForUseragent" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesForApplication">
+         <soap12:operation soapAction="urn:getDevicesForApplication" style="document" />
+         <wsdl:input>
+            <soap12:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="WURFLDeviceServiceHttpBinding" type="axis2:WURFLDeviceServicePortType">
+      <http:binding verb="POST" />
+      <wsdl:operation name="getUserAgentForMakeModel">
+         <http:operation location="getUserAgentForMakeModel" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllOptusApplications">
+         <http:operation location="getAllOptusApplications" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityForUserAgentAndCapabilityName">
+         <http:operation location="getCapabilityForUserAgentAndCapabilityName" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilitiesForUserAgentAndGroup">
+         <http:operation location="getCapabilitiesForUserAgentAndGroup" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findDeviceForMakeModel">
+         <http:operation location="findDeviceForMakeModel" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllModelsByMake">
+         <http:operation location="getAllModelsByMake" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getMakes">
+         <http:operation location="getMakes" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForMakeAndModel">
+         <http:operation location="getOptusApplicationsForMakeAndModel" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="isApplicationSupportedByDevice">
+         <http:operation location="isApplicationSupportedByDevice" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getVersion">
+         <http:operation location="getVersion" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesWithCapabilities">
+         <http:operation location="getDevicesWithCapabilities" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAllGroups">
+         <http:operation location="getAllGroups" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getCapabilityNamesForGroup">
+         <http:operation location="getCapabilityNamesForGroup" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationByName">
+         <http:operation location="getOptusApplicationByName" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getOptusApplicationsForUseragent">
+         <http:operation location="getOptusApplicationsForUseragent" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getDevicesForApplication">
+         <http:operation location="getDevicesForApplication" />
+         <wsdl:input>
+            <mime:content type="text/xml" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="WURFLDeviceService">
+      <wsdl:port name="WURFLDeviceServiceSOAP11port_http" binding="axis2:WURFLDeviceServiceSOAP11Binding">
+         <soap:address location="http://localhost:8080/axis2/services/WURFLDeviceService" />
+      </wsdl:port>
+      <wsdl:port name="WURFLDeviceServiceSOAP12port_http" binding="axis2:WURFLDeviceServiceSOAP12Binding">
+         <soap12:address location="http://localhost:8080/axis2/services/WURFLDeviceService" />
+      </wsdl:port>
+      <wsdl:port name="WURFLDeviceServiceHttpport1" binding="axis2:WURFLDeviceServiceHttpBinding">
+         <http:address location="http://localhost:8080/axis2/rest/WURFLDeviceService" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
+

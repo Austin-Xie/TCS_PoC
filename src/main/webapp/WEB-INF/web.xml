@@ -18,8 +18,15 @@
 	</listener>
 
 	<servlet>
-		<servlet-name>CXFServlet</servlet-name>
-		<display-name>CXF Servlet</display-name>
+		<servlet-name>WurflAdminServlet</servlet-name>
+		<display-name>WURFL Admin Servlet</display-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>WurflWSServlet</servlet-name>
+		<display-name>WURFL WS Servlet</display-name>
 		<servlet-class>
 			org.apache.cxf.transport.servlet.CXFServlet
 		</servlet-class>
@@ -27,7 +34,12 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>CXFServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>WurflWSServlet</servlet-name>
+		<url-pattern>/ws/*</url-pattern>
 	</servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>WurflAdminServlet</servlet-name>
+        <url-pattern>/admin/*</url-pattern>
+    </servlet-mapping>
 </web-app>
